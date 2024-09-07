@@ -3,7 +3,14 @@ package main.java.entrega1.com.CFDP.proyecto;
 import java.io.*;
 import java.util.*;
 
+/**
+ * Clase para generar archivos de información de vendedores y productos.
+ */
 public class GenerateInfoFiles {
+
+    /**
+     * Método principal para generar archivos de información de vendedores y productos.
+     */
     public static void generateInfoFiles() {
         Scanner scanner = new Scanner(System.in);
 
@@ -58,6 +65,16 @@ public class GenerateInfoFiles {
         }
     }
 
+    /**
+     * Crea un archivo de ventas para un vendedor específico.
+     *
+     * @param tipoDocumento   Tipo de documento del vendedor.
+     * @param numeroDocumento Número de documento del vendedor.
+     * @param nombre          Nombre del vendedor.
+     * @param apellido        Apellido del vendedor.
+     * @param productos       Lista de productos vendidos.
+     * @throws IOException Si ocurre un error al escribir el archivo.
+     */
     public static void createSalesMenFile(String tipoDocumento, String numeroDocumento, String nombre, String apellido, List<String> productos) throws IOException {
         try (BufferedWriter writer = new BufferedWriter(new FileWriter("data/ventas/" + numeroDocumento + ".txt"))) {
             writer.write(tipoDocumento + ";" + numeroDocumento + "\n");
@@ -70,6 +87,12 @@ public class GenerateInfoFiles {
         }
     }
 
+    /**
+     * Crea un archivo de productos con la información proporcionada.
+     *
+     * @param productos Lista de productos vendidos.
+     * @throws IOException Si ocurre un error al escribir el archivo.
+     */
     public static void createProductsFile(List<String> productos) throws IOException {
         try (BufferedWriter writer = new BufferedWriter(new FileWriter("data/productos.txt", true))) {
             for (String producto : productos) {
@@ -82,6 +105,15 @@ public class GenerateInfoFiles {
         }
     }
 
+    /**
+     * Crea un archivo con la información del vendedor.
+     *
+     * @param tipoDocumento   Tipo de documento del vendedor.
+     * @param numeroDocumento Número de documento del vendedor.
+     * @param nombre          Nombre del vendedor.
+     * @param apellido        Apellido del vendedor.
+     * @throws IOException Si ocurre un error al escribir el archivo.
+     */
     public static void createSalesManInfoFile(String tipoDocumento, String numeroDocumento, String nombre, String apellido) throws IOException {
         try (BufferedWriter writer = new BufferedWriter(new FileWriter("data/vendedores.txt", true))) {
             writer.write(tipoDocumento + ";" + numeroDocumento + ";" + nombre + ";" + apellido + "\n");

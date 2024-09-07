@@ -3,7 +3,18 @@ package main.java.entrega1.com.CFDP.proyecto;
 import java.io.*;
 import java.util.*;
 
+/**
+ * Clase para leer archivos de vendedores.
+ */
 public class ArchivoVendedores {
+
+    /**
+     * Lee el archivo de vendedores y crea un mapa de vendedores.
+     *
+     * @param archivoVendedores Ruta del archivo de vendedores.
+     * @return Mapa de vendedores.
+     * @throws IOException Si ocurre un error al leer el archivo.
+     */
     public static Map<String, Vendedor> leerVendedores(String archivoVendedores) throws IOException {
         Map<String, Vendedor> vendedores = new HashMap<>();
         try (BufferedReader br = new BufferedReader(new FileReader(archivoVendedores))) {

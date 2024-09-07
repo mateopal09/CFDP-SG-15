@@ -2,10 +2,17 @@ package main.java.entrega1.com.CFDP.proyecto;
 
 import java.util.*;
 
+/**
+ * Clase principal que ejecuta la generación de reportes.
+ */
 public class main {
+    /**
+     * Método principal que ejecuta la generación de reportes de vendedores y productos.
+     *
+     * @param args Argumentos de la línea de comandos.
+     */
     public static void main(String[] args) {
         try {
-
             GenerateInfoFiles.generateInfoFiles();
 
             Map<String, Vendedor> vendedores = ArchivoVendedores.leerVendedores("data/vendedores.txt");
