@@ -4,7 +4,7 @@ import java.io.*;
 import java.util.*;
 
 public class ArchivoProductos {
-    public static Map<String, Producto> leerProductos(String archivoProductos) {
+    public static Map<String, Producto> leerProductos(String archivoProductos) throws IOException {
         Map<String, Producto> productos = new HashMap<>();
         try (BufferedReader br = new BufferedReader(new FileReader(archivoProductos))) {
             String linea;
@@ -15,8 +15,6 @@ public class ArchivoProductos {
                     productos.put(partes[0], producto);
                 }
             }
-        } catch (IOException e) {
-            e.printStackTrace();
         }
         return productos;
     }
