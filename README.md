@@ -14,6 +14,12 @@ This is the repository for the project related to Conceptos Fundamentales de Pro
 ## Introduction
 This project is designed to manage sales information, generate reports for vendors and products, and process data from text files. It includes functionalities for reading and processing data, generating formatted reports, and handling sales calculations.
 
+# Contributors
+The following people collaborated:
+- Martin E. Lugo Rodriguez
+- Mirian Del Carmen Meza Martinez 
+- Mateo Palomá Quila
+
 ## How It Works
 The project consists of several main components:
 - **GenerateInfoFiles**: Reads input from the user to create sales and product files.
