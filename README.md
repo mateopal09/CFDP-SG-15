@@ -4,12 +4,13 @@ This is the repository for the project related to Conceptos Fundamentales de Pro
 
 ## Table of Contents
 - Introduction
+- Contributors
 - How It Works
 - Setup Instructions
 - Project Creation
 - Sequence Diagram
 - Contributing
-- License
+
 
 ## Introduction
 This project is designed to manage sales information, generate reports for vendors and products, and process data from text files. It includes functionalities for reading and processing data, generating formatted reports, and handling sales calculations.
