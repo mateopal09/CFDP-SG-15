@@ -82,6 +82,12 @@ public class GenerateInfoFiles {
                 String[] parts = producto.split(";");
                 String idProducto = parts[0];
                 int cantidadVendida = Integer.parseInt(parts[3]);
+
+                // Validar que el ID del producto y la cantidad vendida sean coherentes
+                if (idProducto == null || idProducto.isEmpty() || cantidadVendida < 0) {
+                    System.err.println("Datos incoherentes: " + producto);
+                    continue;
+                }
                 writer.write(idProducto + ";" + cantidadVendida + "\n");
             }
         }
@@ -100,6 +106,13 @@ public class GenerateInfoFiles {
                 String idProducto = parts[0];
                 String nombreProducto = parts[1];
                 double precioProducto = Double.parseDouble(parts[2]);
+
+                // Validar que los datos del producto sean coherentes
+                if (idProducto == null || idProducto.isEmpty() || nombreProducto == null || nombreProducto.isEmpty() || precioProducto < 0) {
+                    System.err.println("Datos incoherentes: " + producto);
+                    continue;
+                }
+
                 writer.write(idProducto + ";" + nombreProducto + ";" + String.format(Locale.US, "%.2f", precioProducto) + "\n");
             }
         }
@@ -116,7 +129,12 @@ public class GenerateInfoFiles {
      */
     public static void createSalesManInfoFile(String tipoDocumento, String numeroDocumento, String nombre, String apellido) throws IOException {
         try (BufferedWriter writer = new BufferedWriter(new FileWriter("data/vendedores.txt", true))) {
-            writer.write(tipoDocumento + ";" + numeroDocumento + ";" + nombre + ";" + apellido + "\n");
-        }
+            // Validar que los datos del vendedor sean coherentes
+            if (tipoDocumento == null || tipoDocumento.isEmpty() || numeroDocumento == null || numeroDocumento.isEmpty() || nombre == null || nombre.isEmpty() || apellido == null || apellido.isEmpty()) {
+                System.err.println("Datos incoherentes del vendedor: " + tipoDocumento + ";" + numeroDocumento + ";" + nombre + ";" + apellido);
+                return;
+            }
+            writer.write(tipoDocumento + ";" + numeroDocumento + ";" + nombre + ";" + apellido);
+        }   
     }
 }

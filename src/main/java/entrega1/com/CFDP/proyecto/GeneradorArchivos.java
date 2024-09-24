@@ -21,7 +21,7 @@ public class GeneradorArchivos {
         try (BufferedWriter writer = new BufferedWriter(new FileWriter(archivoSalida))) {
             for (Vendedor vendedor : vendedores) {
                 String totalVentasFormateado = numberFormat.format(vendedor.getTotalVentas());
-                writer.write(vendedor.getNombres() + " " + vendedor.getApellidos() + ";" + totalVentasFormateado + "\n");
+                writer.write(vendedor.getNombres() + ";" + totalVentasFormateado + "\n");
             }
         } catch (IOException e) {
             e.printStackTrace();
