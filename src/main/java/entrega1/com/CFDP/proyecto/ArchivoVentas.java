@@ -25,11 +25,18 @@ public class ArchivoVentas {
                 String idVendedor = null;
                 while ((linea = br.readLine()) != null) {
                     String[] partes = linea.split(";");
-                    if (partes.length == 2 && partes[0].equals("CC")) {
+                    if (partes.length == 2 && (partes[0].equalsIgnoreCase("CC") || partes[0].equalsIgnoreCase("TI"))) {
                         idVendedor = partes[1];
                     } else if (partes.length == 2 && idVendedor != null) {
                         String idProducto = partes[0];
-                        int cantidad = Integer.parseInt(partes[1]);
+                        int cantidad;
+                        try {
+                            cantidad = Integer.parseInt(partes[1]);
+                        } catch (NumberFormatException e) {
+                            System.err.println("Cantidad inválida en línea: " + linea);
+                            continue;
+                        }
+    
                         Producto producto = productosMap.get(idProducto);
                         if (producto != null) {
                             double precio = producto.getPrecioPorUnidad();
@@ -39,11 +46,19 @@ public class ArchivoVentas {
                                 vendedor.agregarVenta(monto);
                             }
                             producto.agregarVenta(cantidad);
+                        } else {
+                            System.err.println("Producto no encontrado: " + idProducto);
                         }
+                    } else {
+                        System.err.println("Formato incorrecto en línea: " + linea);
                     }
                 }
+            } catch (IOException e) {
+                System.err.println("Error al leer el archivo: " + archivo.getName());
+                e.printStackTrace();
             }
         }
         return new ArrayList<>(vendedoresMap.values());
     }
+    
 }
